@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.xja.dao.ActorMapper">
+  <resultMap id="BaseResultMap" type="edu.xja.domain.Actor">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="actor_name" jdbcType="VARCHAR" property="actorName" />
+    <result column="actor_nation" jdbcType="VARCHAR" property="actorNation" />
+    <result column="actor_birthday" jdbcType="VARCHAR" property="actorBirthday" />
+    <result column="actor_bloodtype" jdbcType="VARCHAR" property="actorBloodtype" />
+    <result column="actor_hometown" jdbcType="VARCHAR" property="actorHometown" />
+    <result column="actor_position" jdbcType="VARCHAR" property="actorPosition" />
+    <result column="actor_sex" jdbcType="VARCHAR" property="actorSex" />
+    <result column="actor_constellation" jdbcType="VARCHAR" property="actorConstellation" />
+    <result column="actor_school" jdbcType="VARCHAR" property="actorSchool" />
+    <result column="actor_introduce" jdbcType="VARCHAR" property="actorIntroduce" />
+    <result column="actor_height" jdbcType="DOUBLE" property="actorHeight" />
+    <result column="actor_fansname" jdbcType="VARCHAR" property="actorFansname" />
+    <result column="actor_nationality" jdbcType="VARCHAR" property="actorNationality" />
+    <result column="actor_company" jdbcType="VARCHAR" property="actorCompany" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="delete_flag" jdbcType="INTEGER" property="deleteFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, actor_name, actor_nation, actor_birthday, actor_bloodtype, actor_hometown, actor_position, 
+    actor_sex, actor_constellation, actor_school, actor_introduce, actor_height, actor_fansname, 
+    actor_nationality, actor_company, create_time, creator, operate_time, operator, delete_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_actor
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_actor
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="edu.xja.domain.Actor">
+    insert into t_actor (id, actor_name, actor_nation, 
+      actor_birthday, actor_bloodtype, actor_hometown, 
+      actor_position, actor_sex, actor_constellation, 
+      actor_school, actor_introduce, actor_height, 
+      actor_fansname, actor_nationality, actor_company, 
+      create_time, creator, operate_time, 
+      operator, delete_flag)
+    values (#{id,jdbcType=INTEGER}, #{actorName,jdbcType=VARCHAR}, #{actorNation,jdbcType=VARCHAR}, 
+      #{actorBirthday,jdbcType=VARCHAR}, #{actorBloodtype,jdbcType=VARCHAR}, #{actorHometown,jdbcType=VARCHAR}, 
+      #{actorPosition,jdbcType=VARCHAR}, #{actorSex,jdbcType=VARCHAR}, #{actorConstellation,jdbcType=VARCHAR}, 
+      #{actorSchool,jdbcType=VARCHAR}, #{actorIntroduce,jdbcType=VARCHAR}, #{actorHeight,jdbcType=DOUBLE}, 
+      #{actorFansname,jdbcType=VARCHAR}, #{actorNationality,jdbcType=VARCHAR}, #{actorCompany,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, #{operateTime,jdbcType=TIMESTAMP}, 
+      #{operator,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="edu.xja.domain.Actor">
+    insert into t_actor
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="actorName != null">
+        actor_name,
+      </if>
+      <if test="actorNation != null">
+        actor_nation,
+      </if>
+      <if test="actorBirthday != null">
+        actor_birthday,
+      </if>
+      <if test="actorBloodtype != null">
+        actor_bloodtype,
+      </if>
+      <if test="actorHometown != null">
+        actor_hometown,
+      </if>
+      <if test="actorPosition != null">
+        actor_position,
+      </if>
+      <if test="actorSex != null">
+        actor_sex,
+      </if>
+      <if test="actorConstellation != null">
+        actor_constellation,
+      </if>
+      <if test="actorSchool != null">
+        actor_school,
+      </if>
+      <if test="actorIntroduce != null">
+        actor_introduce,
+      </if>
+      <if test="actorHeight != null">
+        actor_height,
+      </if>
+      <if test="actorFansname != null">
+        actor_fansname,
+      </if>
+      <if test="actorNationality != null">
+        actor_nationality,
+      </if>
+      <if test="actorCompany != null">
+        actor_company,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="operateTime != null">
+        operate_time,
+      </if>
+      <if test="operator != null">
+        operator,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="actorName != null">
+        #{actorName,jdbcType=VARCHAR},
+      </if>
+      <if test="actorNation != null">
+        #{actorNation,jdbcType=VARCHAR},
+      </if>
+      <if test="actorBirthday != null">
+        #{actorBirthday,jdbcType=VARCHAR},
+      </if>
+      <if test="actorBloodtype != null">
+        #{actorBloodtype,jdbcType=VARCHAR},
+      </if>
+      <if test="actorHometown != null">
+        #{actorHometown,jdbcType=VARCHAR},
+      </if>
+      <if test="actorPosition != null">
+        #{actorPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="actorSex != null">
+        #{actorSex,jdbcType=VARCHAR},
+      </if>
+      <if test="actorConstellation != null">
+        #{actorConstellation,jdbcType=VARCHAR},
+      </if>
+      <if test="actorSchool != null">
+        #{actorSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="actorIntroduce != null">
+        #{actorIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="actorHeight != null">
+        #{actorHeight,jdbcType=DOUBLE},
+      </if>
+      <if test="actorFansname != null">
+        #{actorFansname,jdbcType=VARCHAR},
+      </if>
+      <if test="actorNationality != null">
+        #{actorNationality,jdbcType=VARCHAR},
+      </if>
+      <if test="actorCompany != null">
+        #{actorCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null">
+        #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="edu.xja.domain.Actor">
+    update t_actor
+    <set>
+      <if test="actorName != null">
+        actor_name = #{actorName,jdbcType=VARCHAR},
+      </if>
+      <if test="actorNation != null">
+        actor_nation = #{actorNation,jdbcType=VARCHAR},
+      </if>
+      <if test="actorBirthday != null">
+        actor_birthday = #{actorBirthday,jdbcType=VARCHAR},
+      </if>
+      <if test="actorBloodtype != null">
+        actor_bloodtype = #{actorBloodtype,jdbcType=VARCHAR},
+      </if>
+      <if test="actorHometown != null">
+        actor_hometown = #{actorHometown,jdbcType=VARCHAR},
+      </if>
+      <if test="actorPosition != null">
+        actor_position = #{actorPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="actorSex != null">
+        actor_sex = #{actorSex,jdbcType=VARCHAR},
+      </if>
+      <if test="actorConstellation != null">
+        actor_constellation = #{actorConstellation,jdbcType=VARCHAR},
+      </if>
+      <if test="actorSchool != null">
+        actor_school = #{actorSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="actorIntroduce != null">
+        actor_introduce = #{actorIntroduce,jdbcType=VARCHAR},
+      </if>
+      <if test="actorHeight != null">
+        actor_height = #{actorHeight,jdbcType=DOUBLE},
+      </if>
+      <if test="actorFansname != null">
+        actor_fansname = #{actorFansname,jdbcType=VARCHAR},
+      </if>
+      <if test="actorNationality != null">
+        actor_nationality = #{actorNationality,jdbcType=VARCHAR},
+      </if>
+      <if test="actorCompany != null">
+        actor_company = #{actorCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="operateTime != null">
+        operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operator != null">
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="edu.xja.domain.Actor">
+    update t_actor
+    set actor_name = #{actorName,jdbcType=VARCHAR},
+      actor_nation = #{actorNation,jdbcType=VARCHAR},
+      actor_birthday = #{actorBirthday,jdbcType=VARCHAR},
+      actor_bloodtype = #{actorBloodtype,jdbcType=VARCHAR},
+      actor_hometown = #{actorHometown,jdbcType=VARCHAR},
+      actor_position = #{actorPosition,jdbcType=VARCHAR},
+      actor_sex = #{actorSex,jdbcType=VARCHAR},
+      actor_constellation = #{actorConstellation,jdbcType=VARCHAR},
+      actor_school = #{actorSchool,jdbcType=VARCHAR},
+      actor_introduce = #{actorIntroduce,jdbcType=VARCHAR},
+      actor_height = #{actorHeight,jdbcType=DOUBLE},
+      actor_fansname = #{actorFansname,jdbcType=VARCHAR},
+      actor_nationality = #{actorNationality,jdbcType=VARCHAR},
+      actor_company = #{actorCompany,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      operate_time = #{operateTime,jdbcType=TIMESTAMP},
+      operator = #{operator,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
